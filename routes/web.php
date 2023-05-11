@@ -25,10 +25,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
 // admin routes to dashboard
 Route::get('/dashboard',[AdminController::class,'dashboard']);
-
 
 // categories routes
 Route::get('/categories',[CategoryController::class,'index']);
