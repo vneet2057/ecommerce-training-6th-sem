@@ -25,6 +25,7 @@
         <div class="form-gorup my-3">
             <label for="">Product Image</label>
             <input type="file" name="product_image" value="" class="form-control">
+            <span>Old Photo: <img width="10%" src="{{asset($product->product_image)}}" alt=""></span>
         </div>
         <div class="form-gorup my-3">
             <label for="">Product Category</label>

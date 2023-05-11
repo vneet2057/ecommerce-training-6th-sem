@@ -44,6 +44,8 @@
         <thead>
             <th width="30%">Product Details</th>
             <th>Product Price</th>
+            <th>Product Category</th>
+
             <th>Action</th>
         </thead>
         <tbody>
@@ -51,10 +53,11 @@
             @foreach($products as $product)
             <tr>
                 <td>
-                    <img src="{{$product->product_image}}" width="20%" alt="">
+                    <img src="{{$product->product_image}}" width="10%" alt="">
                    <strong>{{$product->product_name}}</strong> 
                 </td>
                 <td>NPR {{$product->product_price}}</td>
+                <td>{{$product->category['category_name']}}</td>
                 <td>
                     <a href="/products/edit/{{$product->id}}" class="btn btn-primary">Edit</a>
                     <a href="/products/delete/{{$product->id}}" class="btn btn-danger">Delete</a>
