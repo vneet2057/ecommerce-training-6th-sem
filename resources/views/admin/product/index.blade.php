@@ -16,7 +16,7 @@
         </div>
         <div class="form-gorup my-3">
             <label for="">Product Price</label>
-            <input type="text" name="product_price" id="" class="form-control">
+            <input type="number" name="product_price" id="" class="form-control">
         </div>
         <div class="form-gorup my-3">
             <label for="">Product Description</label>
@@ -31,7 +31,7 @@
             <select name="category_id" id="" class="form-control">
                 <option value="">Select Category</option>
                 @foreach($categories as $category)
-                    <option value="{{$category->id}}">{{$category->category_name}}</option>
+                <option value="{{$category->id}}">{{$category->category_name}}</option>
                 @endforeach
             </select>
         </div>
@@ -42,12 +42,25 @@
 <div class="container mt-4">
     <table class="table">
         <thead>
-            <th>Product Name</th>
+            <th width="30%">Product Details</th>
             <th>Product Price</th>
             <th>Action</th>
         </thead>
         <tbody>
-           
+            <!-- loop product with products variable -->
+            @foreach($products as $product)
+            <tr>
+                <td>
+                    <img src="{{$product->product_image}}" width="20%" alt="">
+                   <strong>{{$product->product_name}}</strong> 
+                </td>
+                <td>NPR {{$product->product_price}}</td>
+                <td>
+                    <a href="/products/edit/{{$product->id}}" class="btn btn-primary">Edit</a>
+                    <a href="/products/delete/{{$product->id}}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            @endforeach
         </tbody>
 
     </table>

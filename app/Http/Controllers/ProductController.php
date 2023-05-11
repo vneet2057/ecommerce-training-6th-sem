@@ -64,7 +64,9 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $product = Product::find($id);
+        $categories = Category::all();
+        return view('admin.product.edit',compact('product','categories'));
     }
 
     /**
@@ -72,7 +74,22 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $product = Product::find($id);
+        $product->product_name = $request->product_name;
+        $product->product_price = $request->product_price;
+        $product->product_description = $request->product_description;
+        $product->category_id = $request->category_id;
+
+        if($request->hasFile('product_image')){
+            $image = $request->file('product_image');
+            $image_new_name = time().$image->getClientOriginalName();
+            $image->move('images/products/',$image_new_name);
+            $product->product_image = 'images/products/'. $image_new_name;
+        }
+
+        $product->update();
+
+        return redirect('/products')->with('message','Product Updated Successfully');
     }
 
     /**
@@ -80,6 +97,9 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::find($id);
+        $product->delete();
+
+        return back()->with('message','Product Deleted Successfully');
     }
 }
