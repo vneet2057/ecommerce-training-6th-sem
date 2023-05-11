@@ -1,6 +1,12 @@
 @extends('admin.layouts.main')
 @section('content')
 
+@if(session('message'))
+<div class="alert alert-success container mt-2">
+    {{session('message')}}
+</div>
+@endif
+
 <div class="container mt-4">
     <form action="/categories/store" method="post">
         @csrf
@@ -23,7 +29,7 @@
             @foreach($categories as $category)
             <tr>
                 <td>{{$category->category_name}}</td>
-                <td><a href="">Edit</a> <a href="">Delete</a></td>
+                <td><a href="/categories/edit/{{$category->id}}">Edit</a> <a href="/categories/delete/{{$category->id}}">Delete</a></td>
             </tr>
             @endforeach
         </tbody>
