@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +27,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // admin routes to dashboard
 Route::get('/dashboard',[AdminController::class,'dashboard']);
+
+
+// categories routes
+Route::get('/categories',[CategoryController::class,'index']);
+Route::post('/categories/store',[CategoryController::class,'store']);
+Route::get('/categories/edit/{id}',[CategoryController::class,'edit']);
+Route::post('/categories/update/{id}',[CategoryController::class,'update']);
+Route::get('/categories/delete/{id}',[CategoryController::class,'delete']);
