@@ -1,6 +1,14 @@
 @extends('user.layouts.main')
 @section('content')
 
+<?php
+
+use App\Models\Product;
+
+$products = Product::all();
+
+?>
+
 <!--slider area start-->
 <section class="slider_section d-flex align-items-center" data-bgimg="{{asset('user/assets/img/slider/slider3.jpg')}}">
     <div class="slider_area owl-carousel">
@@ -9,7 +17,7 @@
                 <div class="row">
                     <div class="col-xl-6 col-md-6">
                         <div class="slider_content">
-                            <h1>Next level of Drone</h1>
+                            <h1>Next level of Polo Tshirts</h1>
                             <h2>Insane Quality for use</h2>
                             <p>Special offer <span> 20% off </span> this week</p>
                             <a class="button" href="product-details.html">Buy now</a>
@@ -17,7 +25,7 @@
                     </div>
                     <div class="col-xl-6 col-md-6">
                         <div class="slider_content">
-                            <img src="{{asset('user/assets/img/product/1.png')}}" alt="">
+                            <img src="{{asset('default.jpg')}}" style="width: 80% !important;" alt="">
                         </div>
                     </div>
                 </div>
@@ -29,7 +37,7 @@
                 <div class="row">
                     <div class="col-xl-6 col-md-6">
                         <div class="slider_content">
-                            <h1>Best Camera Included</h1>
+                            <h1>Best Material </h1>
                             <h2>100% Flexible</h2>
                             <p>exclusive offer <span> 20% off </span> this week</p>
                             <a class="button" href="product-details.html">Shop now</a>
@@ -37,7 +45,7 @@
                     </div>
                     <div class="col-xl-6 col-md-6">
                         <div class="slider_content">
-                            <img src="{{asset('user/assets/img/product/2.png')}}" alt="">
+                            <img src="{{asset('default1.webp')}}" alt="">
                         </div>
                     </div>
                 </div>
@@ -56,7 +64,7 @@
                     </div>
                     <div class="col-xl-6 col-md-6">
                         <div class="slider_content">
-                            <img src="{{asset('user/assets/img/product/3.png')}}" alt="">
+                            <img src="{{asset('default2.png')}}" style="width: 60% !important;" alt="">
                         </div>
                     </div>
                 </div>
@@ -77,63 +85,27 @@
             </div>
         </div>
         <div class="row justify-content-center">
+            @foreach($products as $product)
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
                 <div class="single-tranding">
                     <a href="product-details.html">
                         <div class="tranding-pro-img">
-                            <img src="{{asset('user/assets/img/product/tranding-1.jpg')}}" alt="">
+                            <img src="{{asset($product->product_image)}}" alt="">
                         </div>
                         <div class="tranding-pro-title">
-                            <h3>Meyoji Robast Drone</h3>
-                            <h4>Drone</h4>
+                            <h3>{{$product->product_name}}</h3>
+                            <h4>{{$product->category['category_name']}}</h4>
                         </div>
                         <div class="tranding-pro-price">
                             <div class="price_box">
-                                <span class="current_price">$70.00</span>
-                                <span class="old_price">$80.00</span>
+                                <span class="current_price">NPR {{$product->product_price}}</span>
                             </div>
                         </div>
                     </a>
                 </div>
             </div>
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
-                <div class="single-tranding">
-                    <a href="product-details.html">
-                        <div class="tranding-pro-img">
-                            <img src="{{asset('user/assets/img/product/tranding-2.jpg')}}" alt="">
-                        </div>
-                        <div class="tranding-pro-title">
-                            <h3>Ut praesentium earum</h3>
-                            <h4>Mevrik</h4>
-                        </div>
-                        <div class="tranding-pro-price">
-                            <div class="price_box">
-                                <span class="current_price">$70.00</span>
-                                <span class="old_price">$80.00</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
-                <div class="single-tranding">
-                    <a href="product-details.html">
-                        <div class="tranding-pro-img">
-                            <img src="{{asset('user/assets/img/product/tranding-3.jpg')}}" alt="">
-                        </div>
-                        <div class="tranding-pro-title">
-                            <h3>Consectetur adipisicing</h3>
-                            <h4>Flyer</h4>
-                        </div>
-                        <div class="tranding-pro-price">
-                            <div class="price_box">
-                                <span class="current_price">$70.00</span>
-                                <span class="old_price">$80.00</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
+            @endforeach
+
         </div>
     </div>
 </section><!--Tranding product-->

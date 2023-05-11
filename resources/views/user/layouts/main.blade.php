@@ -1,3 +1,10 @@
+<?php 
+
+
+
+?>
+
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -48,8 +55,8 @@
                         </div>
                         <div class="top_right text-right">
                             <ul>
-                                <li><a href="my-account.html"> My Account </a></li>
-                                <li><a href="checkout.html"> Checkout </a></li>
+                                <li><a href="/login"> Login </a></li>
+                                <li><a href="/register"> Register </a></li>
                             </ul>
                         </div>
                         <div class="search_container">
@@ -127,7 +134,7 @@
                                 <li class="menu-item-has-children">
                                     <a href="product-details.html">product</a>
                                 </li>
-                                
+
                             </ul>
                         </div>
 
@@ -162,8 +169,13 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="top_right text-right">
                                 <ul>
-                                    <li><a href="my-account.html">Account</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
+                                    @if(auth()->user())
+                                    <li><a href="/login"> Logout </a></li>
+                                    @else
+                                    <li><a href="/login"> Login </a></li>
+                                    <li><a href="/register"> Register </a></li>
+                                    @endif
+
                                 </ul>
                             </div>
                         </div>
@@ -265,7 +277,7 @@
                                         <li><a href="index-2.html">home</a></li>
                                         <li><a href="product-details.html">Product</a></li>
 
-                                    
+
                                     </ul>
                                 </nav>
                             </div>
