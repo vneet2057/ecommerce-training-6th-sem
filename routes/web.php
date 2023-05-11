@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -43,3 +44,6 @@ Route::post('/products/store',[ProductController::class,'store']);
 Route::get('/products/edit/{id}',[ProductController::class,'edit']);
 Route::post('/products/update/{id}',[ProductController::class,'update']);
 Route::get('/products/delete/{id}',[ProductController::class,'destroy']);
+
+// orders routes
+Route::get('/orders',[OrderController::class,'index']);
