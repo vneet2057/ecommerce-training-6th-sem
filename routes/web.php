@@ -35,6 +35,11 @@ Route::get('/pay-with-khalti/{price}/{order_id}', [CheckoutController::class,'pa
 
 Route::get('/update-order/{id}',[CheckoutController::class,'updateOrder']);
 
+Route::post('/change-order-details/{id}',[OrderController::class,'changeOrderDetails']);
+
+
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
