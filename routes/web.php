@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
@@ -27,10 +28,12 @@ Route::post('/add-to-cart/{id}', [CartController::class,'addToCart']);
 Route::get('/delete-cart-item/{id}',[CartController::class,'destroy']);
 
 
-Route::get('/checkout', [UserController::class,'checkout']);
-Route::get('/pay-with-khalti/{price}/{order_id}', [UserController::class,'payWithKhalti']);
+Route::get('/checkout', [CheckoutController::class,'checkout']);
+Route::post('/place-order', [CheckoutController::class,'placeOrder']);
 
+Route::get('/pay-with-khalti/{price}/{order_id}', [CheckoutController::class,'payWithKhalti']);
 
+Route::get('/update-order/{id}',[CheckoutController::class,'updateOrder']);
 
 Auth::routes();
 

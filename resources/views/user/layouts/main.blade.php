@@ -38,7 +38,8 @@ if (auth()->user()) {
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="{{asset('user/assets/css/style.css')}}">
     <link rel="stylesheet" href="{{assert('user/assets/css/custom.css')}}">
-
+    <script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
+</head>
 </head>
 
 <body>
@@ -207,7 +208,7 @@ if (auth()->user()) {
                     <div class="row align-items-center">
                         <div class="col-lg-3 col-md-6">
                             <div class="logo">
-                                <a href="index-2.html"><img src="{{asset('user/assets/img/logo/logo.png')}}" alt=""></a>
+                                <a href="/"><img src="{{asset('user/assets/img/logo/logo.png')}}" alt=""></a>
                             </div>
                         </div>
                         <div class="col-lg-9 col-md-6">
@@ -276,7 +277,7 @@ if (auth()->user()) {
 
                                             <div class="mini_cart_footer">
                                                 <div class="cart_button">
-                                                    <a href="checkout.html">Checkout</a>
+                                                    <a href="/checkout">Checkout</a>
                                                 </div>
 
                                             </div>
@@ -300,7 +301,7 @@ if (auth()->user()) {
                             <div class="main_menu menu_position">
                                 <nav>
                                     <ul>
-                                        <li><a href="index-2.html">home</a></li>
+                                        <li><a href="/">home</a></li>
                                         <li><a href="product-details.html">Product</a></li>
 
 
