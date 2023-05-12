@@ -24,6 +24,7 @@ Route::get('/', [UserController::class,'index']);
 Route::get('/view-product/{id}', [UserController::class,'viewProduct']);
 
 Route::post('/add-to-cart/{id}', [CartController::class,'addToCart']);
+Route::get('/delete-cart-item/{id}',[CartController::class,'destroy']);
 
 
 Route::get('/checkout', [UserController::class,'checkout']);

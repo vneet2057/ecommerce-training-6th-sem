@@ -25,4 +25,12 @@ class CartController extends Controller
             return redirect('/login');
         }
     }
+
+    function destroy($id)
+    {
+        $cart = Cart::find($id);
+        $cart->delete();
+
+        return back();
+    }
 }

@@ -257,7 +257,7 @@ if (auth()->user()) {
                                                     <p>Qty: {{$cart->quantity}} X <span>NPR {{$cart->unit_price}} </span></p>
                                                 </div>
                                                 <div class="cart_remove">
-                                                    <a href="#"><i class="ion-android-close"></i></a>
+                                                    <a href="/delete-cart-item/{{$cart->id}}"><i class="ion-android-close"></i></a>
                                                 </div>
                                             </div>
 
