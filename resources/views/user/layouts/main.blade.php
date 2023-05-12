@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Auth;
 
 if (auth()->user()) {
     $carts = Cart::where('user_id', Auth::user()->id)->get();
-}else{
+} else {
     $carts = null;
 }
 
@@ -226,7 +226,12 @@ if (auth()->user()) {
                                     </div>
                                     <div class="mini_cart_wrapper">
                                         <a href="javascript:void(0)"><img src="{{asset('user/assets/img/shopping-bag.png')}}" alt=""></a>
-                                        <span class="cart_quantity">2</span>
+                                        @if($carts == null)
+                                        <span class="cart_quantity">0</span>
+
+                                        @else
+                                        <span class="cart_quantity">{{$carts->count()}}</span>
+                                        @endif
                                         <!--mini cart-->
                                         <div class="mini_cart">
                                             <?php
@@ -260,7 +265,7 @@ if (auth()->user()) {
                                             $total += $cart->quantity * $cart->unit_price;
                                             ?>
                                             @endforeach
-                                            
+
 
                                             <div class="mini_cart_table">
                                                 <div class="cart_total mt-10">
