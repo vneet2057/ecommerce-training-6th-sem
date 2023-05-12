@@ -88,7 +88,7 @@ $products = Product::all();
             @foreach($products as $product)
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12">
                 <div class="single-tranding">
-                    <a href="product-details.html">
+                    <a href="/view-product/{{$product->id}}">
                         <div class="tranding-pro-img">
                             <img src="{{asset($product->product_image)}}" alt="">
                         </div>

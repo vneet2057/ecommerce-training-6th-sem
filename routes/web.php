@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -20,6 +21,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [UserController::class,'index']);
+Route::get('/view-product/{id}', [UserController::class,'viewProduct']);
+
+Route::post('/add-to-cart/{id}', [CartController::class,'addToCart']);
+
+
+Route::get('/checkout', [UserController::class,'checkout']);
+Route::get('/pay-with-khalti/{price}/{order_id}', [UserController::class,'payWithKhalti']);
+
+
 
 Auth::routes();
 

@@ -1,4 +1,9 @@
-<?php 
+<?php
+
+use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
+
+$carts = Cart::where('user_id', Auth::user()->id)->get();
 
 
 
@@ -211,45 +216,36 @@
                                         <span class="cart_quantity">2</span>
                                         <!--mini cart-->
                                         <div class="mini_cart">
+                                            <?php
+                                            $total = 0;
+                                            ?>
+                                            @foreach($carts as $cart)
                                             <div class="cart_item">
                                                 <div class="cart_img">
-                                                    <a href="#"><img src="{{asset('user/assets/img/s-product/product.jpg')}}" alt=""></a>
+                                                    <a href="#"><img src="{{asset($cart->product['product_image'])}}" alt=""></a>
                                                 </div>
                                                 <div class="cart_info">
-                                                    <a href="#">Sit voluptatem rhoncus sem lectus</a>
-                                                    <p>Qty: 1 X <span> $60.00 </span></p>
+                                                    <a href="#">{{$cart->product['product_name']}}</a>
+                                                    <p>Qty: {{$cart->quantity}} X <span>NPR {{$cart->unit_price}} </span></p>
                                                 </div>
                                                 <div class="cart_remove">
                                                     <a href="#"><i class="ion-android-close"></i></a>
                                                 </div>
                                             </div>
-                                            <div class="cart_item">
-                                                <div class="cart_img">
-                                                    <a href="#"><img src="{{asset('user/assets/img/s-product/product2.jpg')}}" alt=""></a>
-                                                </div>
-                                                <div class="cart_info">
-                                                    <a href="#">Natus erro at congue massa commodo</a>
-                                                    <p>Qty: 1 X <span> $60.00 </span></p>
-                                                </div>
-                                                <div class="cart_remove">
-                                                    <a href="#"><i class="ion-android-close"></i></a>
-                                                </div>
-                                            </div>
+
+                                            <?php
+                                                $total += $cart->quantity * $cart->unit_price;
+                                            ?>
+                                            @endforeach
+
                                             <div class="mini_cart_table">
-                                                <div class="cart_total">
-                                                    <span>Sub total:</span>
-                                                    <span class="price">$138.00</span>
-                                                </div>
                                                 <div class="cart_total mt-10">
                                                     <span>total:</span>
-                                                    <span class="price">$138.00</span>
+                                                    <span class="price">NPR {{$total}}</span>
                                                 </div>
                                             </div>
 
                                             <div class="mini_cart_footer">
-                                                <div class="cart_button">
-                                                    <a href="cart.html">View cart</a>
-                                                </div>
                                                 <div class="cart_button">
                                                     <a href="checkout.html">Checkout</a>
                                                 </div>
