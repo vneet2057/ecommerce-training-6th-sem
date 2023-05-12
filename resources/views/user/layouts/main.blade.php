@@ -3,7 +3,11 @@
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
 
-$carts = Cart::where('user_id', Auth::user()->id)->get();
+if (auth()->user()) {
+    $carts = Cart::where('user_id', Auth::user()->id)->get();
+}else{
+    $carts = null;
+}
 
 
 
@@ -175,7 +179,16 @@ $carts = Cart::where('user_id', Auth::user()->id)->get();
                             <div class="top_right text-right">
                                 <ul>
                                     @if(auth()->user())
-                                    <li><a href="/login"> Logout </a></li>
+                                    <li>
+                                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"> Logout </a>
+
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </li>
+
                                     @else
                                     <li><a href="/login"> Login </a></li>
                                     <li><a href="/register"> Register </a></li>
@@ -219,6 +232,16 @@ $carts = Cart::where('user_id', Auth::user()->id)->get();
                                             <?php
                                             $total = 0;
                                             ?>
+                                            @if($carts == null)
+                                            <p>Please Login To View Your Cart</p>
+
+                                            <div class="mini_cart_footer">
+                                                <div class="cart_button">
+                                                    <a href="/login">Login</a>
+                                                </div>
+
+                                            </div>
+                                            @else
                                             @foreach($carts as $cart)
                                             <div class="cart_item">
                                                 <div class="cart_img">
@@ -234,9 +257,10 @@ $carts = Cart::where('user_id', Auth::user()->id)->get();
                                             </div>
 
                                             <?php
-                                                $total += $cart->quantity * $cart->unit_price;
+                                            $total += $cart->quantity * $cart->unit_price;
                                             ?>
                                             @endforeach
+                                            
 
                                             <div class="mini_cart_table">
                                                 <div class="cart_total mt-10">
@@ -251,6 +275,7 @@ $carts = Cart::where('user_id', Auth::user()->id)->get();
                                                 </div>
 
                                             </div>
+                                            @endif
 
                                         </div>
                                         <!--mini cart end-->
