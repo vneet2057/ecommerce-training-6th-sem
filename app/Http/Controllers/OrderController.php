@@ -21,6 +21,7 @@ class OrderController extends Controller
             }
             $order['order_details'] = $order_details; 
         }
+
         return view('admin.order.index',compact('orders'));
     }
 

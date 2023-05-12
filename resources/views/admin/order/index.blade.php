@@ -27,7 +27,10 @@
                 <td>
                     <p>Order ID: {{$order->id}}</p>
                     <p>Customer Name: {{$order->customer_name}}</p>
-                    <p>Customer Name: {{$order->customer_phone_number}}</p>
+                    <p>Customer Phone Number: {{$order->customer_phone_number}}</p>
+                    <p>Customer Address: {{$order->customer_address}}</p>
+                    <p>Customer Town City: {{$order->customer_town_city}}</p>
+                    <p>Customer Note: {{$order->customer_note}}</p>
                     <p>Order Date: {{$order->created_at->format('d-m-Y')}}</p>
                     <p>Order Payment Method: {{$order->order_payment_type}}</p>
                 </td>
